@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chez Junior Fast Food — Menu & commande sur WhatsApp | Yaoundé</title>
+  <meta name="description" content="Menu digital de Chez Junior Fast Food : burgers, shawarmas, poulet frit et pizzas commandés en 2 minutes sur WhatsApp. Livraison à Yaoundé.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <a class="sr-only" href="#menu">Aller au menu</a>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container-wide site-header__inner">
+      <a class="brand" href="./index.html">
+        <span class="brand__name">Chez Junior</span>
+        <span class="brand__tag">Fast Food</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="#menu">Menu</a>
+        <a href="#comment">Comment ça marche</a>
+        <a href="#infos">Infos</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-button" id="open-cart" type="button" aria-label="Ouvrir le panier">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-button__count" data-empty="true">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="site-main">
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container-wide hero__grid">
+        <div>
+          <span class="hero__badge"><span class="dot" aria-hidden="true"></span> Ouvert · Livraison à Yaoundé</span>
+          <h1 class="hero__title">Burgers, shawarmas et poulet frit, commandés en <em>2 minutes</em> sur WhatsApp.</h1>
+          <p class="hero__subtitle">Faites votre choix dans le menu, la commande arrive directement dans le WhatsApp du fast food. Pas d&rsquo;application à installer, pas de compte à créer.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#menu">Voir le menu</a>
+            <a class="btn btn--whatsapp" href="#" id="reserve-link" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+              Réserver une table
+            </a>
+          </div>
+          <ul class="hero__meta" role="list">
+            <li class="hero__meta-item"><span>Note&nbsp;: <strong id="meta-rating">4,8/5</strong> (<span id="meta-reviews">320</span> avis)</span></li>
+            <li class="hero__meta-item"><span>Livraison moyenne&nbsp;: <strong id="meta-delivery">25 min</strong></span></li>
+            <li class="hero__meta-item"><span>Paiement&nbsp;: <strong>MoMo / cash à la livraison</strong></span></li>
+          </ul>
+        </div>
+        <figure class="hero__figure">
+          <img src="assets/burger.jpg" alt="Cheeseburger maison au cheddar fondu" width="1200" height="800">
+          <figcaption>Cheeseburger best-seller, préparé à la commande.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== Comment ça marche ===== -->
+    <section class="section steps" id="comment">
+      <div class="container-wide">
+        <p class="section__eyebrow">Simple comme WhatsApp</p>
+        <h2 class="section__title">Comment ça marche</h2>
+        <p class="section__lead">Trois étapes, aucune application à installer.</p>
+        <div class="steps__grid">
+          <div class="step reveal">
+            <span class="step__num">1</span>
+            <h3 class="step__title">Choisissez vos plats</h3>
+            <p class="step__text">Parcourez le menu, ajoutez au panier ce qui vous fait envie et ajustez les quantités.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step__num">2</span>
+            <h3 class="step__title">Envoyez la commande</h3>
+            <p class="step__text">Un clic : votre commande complète arrive sur le WhatsApp du restaurant, bien formatée, avec le total.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step__num">3</span>
+            <h3 class="step__title">Recevez ou retirez</h3>
+            <p class="step__text">Livraison à Yaoundé ou retrait sur place. Paiement par MoMo, OM ou cash.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Menu ===== -->
+    <section class="section menu-section" id="menu">
+      <div class="container-wide">
+        <p class="section__eyebrow">À la carte</p>
+        <h2 class="section__title">Notre menu</h2>
+        <p class="section__lead">Prix en francs CFA. Ajoutez vos plats au panier pour commander.</p>
+        <div class="menu-tabs" id="menu-tabs" role="tablist" aria-label="Catégories du menu"></div>
+        <div class="menu-grid" id="menu-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== Infos ===== -->
+    <section class="section info-section" id="infos">
+      <div class="container-wide info__grid">
+        <div>
+          <p class="section__eyebrow">Nous trouver</p>
+          <h2 class="section__title">Infos pratiques</h2>
+          <p class="section__lead">Venez manger sur place, à emporter ou en livraison — on s&rsquo;occupe du reste.</p>
+          <ul class="info-list" role="list">
+            <li class="info-item">
+              <span class="info-item__icon" aria-hidden="true">📍</span>
+              <div>
+                <p class="info-item__label">Adresse</p>
+                <p class="info-item__value">Carrefour Odza, face station Total — Yaoundé</p>
+              </div>
+            </li>
+            <li class="info-item">
+              <span class="info-item__icon" aria-hidden="true">🕒</span>
+              <div>
+                <p class="info-item__label">Horaires</p>
+                <p class="info-item__value">Lun – Dim · 10h00 – 23h30</p>
+              </div>
+            </li>
+            <li class="info-item">
+              <span class="info-item__icon" aria-hidden="true">🛵</span>
+              <div>
+                <p class="info-item__label">Livraison</p>
+                <p class="info-item__value">Yaoundé centre & environs · 500 – 1 000 F selon le quartier</p>
+              </div>
+            </li>
+            <li class="info-item">
+              <span class="info-item__icon" aria-hidden="true">💳</span>
+              <div>
+                <p class="info-item__label">Paiement</p>
+                <p class="info-item__value">MTN MoMo · Orange Money · Cash</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="reservation-card reveal">
+          <h3>Une table pour ce soir ?</h3>
+          <p>Évitez l&rsquo;attente le vendredi et le samedi soir : réservez en un message.</p>
+          <a class="btn btn--whatsapp" href="#" id="reserve-link-footer" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+            Réserver sur WhatsApp
+          </a>
+          <p class="order-hint">Réponse en moins de 10 minutes pendant les heures d&rsquo;ouverture.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Espace gérant (back-office) ===== -->
+  <section id="admin-view" hidden>
+    <div class="container-wide admin">
+
+      <!-- Connexion -->
+      <div class="admin-login" id="admin-login" hidden>
+        <form class="admin-card" id="admin-login-form">
+          <h2 class="admin-title">Espace gérant</h2>
+          <p class="admin-lead">Connectez-vous pour gérer votre menu et vos informations.</p>
+          <div class="field">
+            <label for="admin-pass">Mot de passe</label>
+            <input type="password" id="admin-pass" autocomplete="current-password" placeholder="Mot de passe du gérant">
+          </div>
+          <p class="admin-error" id="admin-login-error" hidden></p>
+          <button class="btn btn--primary" type="submit">Se connecter</button>
+          <p class="order-hint"><a href="#">← Retour au site</a></p>
+        </form>
+      </div>
+
+      <!-- Panneau d'administration -->
+      <div id="admin-panel" hidden>
+        <div class="admin-header">
+          <div>
+            <p class="section__eyebrow">Back-office</p>
+            <h2 class="admin-title">Piloter votre fast food</h2>
+            <p class="admin-lead">Suivez vos commandes en direct, vos chiffres du jour, et gérez votre menu. Les changements sont visibles immédiatement sur le site.</p>
+          </div>
+          <a class="btn btn--ghost" href="#">Voir le site</a>
+        </div>
+
+        <div class="admin-notice" id="admin-notice" hidden></div>
+
+        <!-- Tableau de bord -->
+        <section class="admin-section">
+          <div class="admin-menu-head">
+            <h3 class="admin-subtitle">Tableau de bord</h3>
+            <span class="admin-live"><span class="admin-live__dot" aria-hidden="true"></span>En direct</span>
+          </div>
+          <div class="admin-kpis" id="admin-kpis"></div>
+          <div class="admin-charts">
+            <div class="admin-chart">
+              <h4 class="admin-chart__title">Ventes — 7 derniers jours</h4>
+              <div class="chart-bars" id="admin-chart-days"></div>
+            </div>
+            <div class="admin-chart">
+              <h4 class="admin-chart__title">Heures de pointe (semaine)</h4>
+              <div class="chart-bars" id="admin-chart-hours"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Top plats -->
+        <section class="admin-section">
+          <h3 class="admin-subtitle">Top plats de la semaine</h3>
+          <div class="admin-top" id="admin-topdishes"></div>
+        </section>
+
+        <!-- Commandes en direct -->
+        <section class="admin-section">
+          <div class="admin-menu-head">
+            <h3 class="admin-subtitle">Commandes en cours</h3>
+            <span class="admin-count" id="admin-orders-count"></span>
+          </div>
+          <div class="admin-orders" id="admin-orders"></div>
+          <details class="admin-history">
+            <summary>Commandes terminées</summary>
+            <div id="admin-orders-history"></div>
+          </details>
+        </section>
+
+        <!-- Réglages -->
+        <section class="admin-section">
+          <h3 class="admin-subtitle">Informations du fast food</h3>
+          <form class="admin-settings-grid" id="admin-settings-form">
+            <div class="field">
+              <label for="set-name">Nom</label>
+              <input id="set-name" type="text">
+            </div>
+            <div class="field">
+              <label for="set-type">Type (Fast Food…)</label>
+              <input id="set-type" type="text">
+            </div>
+            <div class="field">
+              <label for="set-whatsapp">Numéro WhatsApp (format international, ex : 237690000000)</label>
+              <input id="set-whatsapp" type="text" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="set-hours">Horaires</label>
+              <input id="set-hours" type="text">
+            </div>
+            <div class="field admin-span-2">
+              <label for="set-address">Adresse</label>
+              <input id="set-address" type="text">
+            </div>
+            <div class="field admin-span-2">
+              <label for="set-delivery">Zone et tarifs de livraison</label>
+              <input id="set-delivery" type="text">
+            </div>
+            <div class="field">
+              <label for="set-rating">Note (ex : 4,8/5)</label>
+              <input id="set-rating" type="text">
+            </div>
+            <div class="field">
+              <label for="set-delivery-time">Temps de livraison affiché</label>
+              <input id="set-delivery-time" type="text">
+            </div>
+            <div class="admin-actions admin-span-2">
+              <button class="btn btn--primary" type="submit">Enregistrer les informations</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Menu -->
+        <section class="admin-section">
+          <div class="admin-menu-head">
+            <h3 class="admin-subtitle">Menu</h3>
+            <button class="btn btn--primary" type="button" id="admin-add-dish">+ Ajouter un plat</button>
+          </div>
+          <p class="order-hint">Astuce : le champ photo accepte un lien (ex : assets/burger.jpg). Laissez vide pour une carte texte. Décochez « Disponible » pour masquer un plat en rupture.</p>
+          <div class="admin-dishes" id="admin-dishes"></div>
+        </section>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container-wide site-footer__inner">
+      <p><strong>Chez Junior</strong> · Carrefour Odza, Yaoundé</p>
+      <p>Menu digital &amp; commande WhatsApp · <a href="#admin">Espace gérant</a></p>
+    </div>
+  </footer>
+
+  <!-- ===== Barre panier mobile ===== -->
+  <div class="cart-bar" id="cart-bar" data-visible="false">
+    <button class="cart-bar__button" id="cart-bar-button" type="button" aria-label="Voir le panier">
+      <span>Voir ma commande (<span class="cart-bar__count">0</span>)</span>
+      <span class="cart-bar__total">0 F</span>
+    </button>
+  </div>
+
+  <!-- ===== Tiroir panier ===== -->
+  <div class="cart-overlay" id="cart-overlay" data-open="false"></div>
+  <aside class="cart-drawer" id="cart-drawer" data-open="false" aria-label="Panier de commande" aria-hidden="true">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">Ma commande</h2>
+      <button class="cart-drawer__close" id="close-cart" type="button" aria-label="Fermer le panier">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-drawer__body" id="cart-body"></div>
+    <div class="cart-drawer__footer">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <strong id="cart-total-value">0 F</strong>
+      </div>
+      <a class="order-whatsapp-btn" id="order-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.464 3.488"/></svg>
+        Commander sur WhatsApp
+      </a>
+      <p class="order-hint">Le message est déjà rempli : vous n&rsquo;avez plus qu&rsquo;à l&rsquo;envoyer. Paiement MoMo / OM / cash.</p>
+    </div>
+  </aside>
+
+  <script>
+    window.__API_BASE__ = 'port/8001';
+  </script>
+  <script src="./app.js" defer></script>
+  <script src="./admin.js" defer></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  const DEFAULT_LINE_HEIGHT = 16;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  const PICK_CAPABILITIES = ["pick"];
+  const PICK_CHAIN_LENGTH = 4;
+  const PICK_MAX_TEXT_CHARS = 120;
+  const PICK_MAX_HTML_CHARS = 300;
+
+  function truncate(value, maxChars) {
+    return value.length > maxChars ? value.slice(0, maxChars - 1) + "…" : value;
+  }
+
+  function isPickableElement(element) {
+    return (
+      element instanceof Element &&
+      element !== document.documentElement &&
+      element !== document.body
+    );
+  }
+
+  function resolvePickTarget(x, y) {
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+    const element = document.elementFromPoint(x, y);
+    return isPickableElement(element) ? element.closest("svg") || element : null;
+  }
+
+  function pickLabel(element) {
+    if (element.id) return element.localName + "#" + element.id;
+    return [element.localName].concat(Array.from(element.classList).slice(0, 2)).join(".");
+  }
+
+  // Only attributes that help find the element in source. data-* values and URL
+  // query strings or fragments can carry tokens.
+  const PICK_ATTRIBUTES = new Set([
+    "id",
+    "class",
+    "name",
+    "type",
+    "role",
+    "alt",
+    "aria-label",
+    "href",
+    "src",
+  ]);
+
+  function pickAttributeValue(attribute) {
+    return attribute.name === "href" || attribute.name === "src"
+      ? attribute.value.split(/[?#]/)[0]
+      : attribute.value;
+  }
+
+  function describePickElement(element) {
+    const chain = [];
+    for (
+      let current = element;
+      isPickableElement(current) && chain.length < PICK_CHAIN_LENGTH;
+      current = current.parentElement
+    ) {
+      chain.unshift(current);
+    }
+    const attributes = Array.from(element.attributes)
+      .filter((attribute) => PICK_ATTRIBUTES.has(attribute.name))
+      .map((attribute) => ` ${attribute.name}="${pickAttributeValue(attribute).replace(/"/g, "&quot;")}"`)
+      .join("");
+    const text = (element.innerText || element.textContent || "").replace(/\s+/g, " ").trim();
+    return {
+      chain: chain.map(pickLabel),
+      html: truncate(`<${element.localName}${attributes}>`, PICK_MAX_HTML_CHARS),
+      text: text ? truncate(text, PICK_MAX_TEXT_CHARS) : undefined,
+    };
+  }
+
+  // Hover asks once per frame, and innerText on a large section forces layout,
+  // so only the rect is re-read while the pointer stays on the same element.
+  // Clicks ask for fresh details since the page may have changed the element.
+  let lastPick = null;
+
+  function describePickTarget(element, fresh) {
+    if (fresh || lastPick?.element !== element) {
+      lastPick = { element, details: describePickElement(element) };
+    }
+    const rect = element.getBoundingClientRect();
+    return {
+      rect: { x: rect.left, y: rect.top, width: rect.width, height: rect.height },
+      ...lastPick.details,
+    };
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+      capabilities: PICK_CAPABILITIES,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_PICK") {
+      const element = resolvePickTarget(event.data.x, event.data.y);
+      postToTrustedTop({
+        type: "INLINE_EDIT_PICK_RESULT",
+        seq: event.data.seq,
+        target: element ? describePickTarget(element, event.data.fresh === true) : null,
+      });
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_BY") {
+      const { deltaX, deltaY, deltaMode } = event.data;
+      if (!scrollForwarding || !Number.isFinite(deltaX) || !Number.isFinite(deltaY)) return;
+      if (deltaMode !== 0 && deltaMode !== 1 && deltaMode !== 2) return;
+      const lineHeight =
+        parseFloat(getComputedStyle(document.documentElement).lineHeight) || DEFAULT_LINE_HEIGHT;
+      const scaleX = deltaMode === 1 ? lineHeight : deltaMode === 2 ? window.innerWidth : 1;
+      const scaleY = deltaMode === 1 ? lineHeight : deltaMode === 2 ? window.innerHeight : 1;
+      // The selection overlay receives the wheel event instead of this iframe.
+      // Instant scrolling preserves trackpad deltas even on smooth-scroll sites.
+      window.scrollBy({ left: deltaX * scaleX, top: deltaY * scaleY, behavior: "instant" });
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
