@@ -9,7 +9,7 @@ const unresolved = rawApiBase.startsWith('__PORT_');
 if (unresolved && !localHostnames.has(location.hostname)) {
   throw new Error('Backend proxy placeholder was not rewritten');
 }
-const API = unresolved ? 'http://localhost:8001' : rawApiBase;
+const API = '';
 
 // ---------- Valeurs par défaut (si le serveur est injoignable) ----------
 

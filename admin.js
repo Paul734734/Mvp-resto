@@ -4,7 +4,7 @@
   const localHostnames = new Set(['localhost', '127.0.0.1', '[::1]']);
   const rawApiBase = window.__API_BASE__ || '';
   const unresolved = rawApiBase.startsWith('__PORT_');
-  const API = unresolved ? 'http://localhost:8001' : rawApiBase;
+  const API = '';
 
   let adminToken = null; // en mémoire : il faut se reconnecter à chaque visite
 

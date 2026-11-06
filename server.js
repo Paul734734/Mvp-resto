@@ -13,7 +13,7 @@ const DATA_DIR = path.join(__dirname, 'data');
 const DATA_FILE = path.join(DATA_DIR, 'db.json');
 const ADMIN_HASH = process.env.ADMIN_HASH;
 if (!ADMIN_HASH) { console.error('ADMIN_HASH manquant dans .env'); process.exit(1); }
-const ADMIN_TOKEN = crypto.createHash('sha256').update(ADMIN_PASSWORD + '::chezjunior').digest('hex');
+const ADMIN_TOKEN = crypto.createHash('sha256').update(ADMIN_HASH + (process.env.SESSION_SECRET || '') + '::chezjunior').digest('hex');
 
 const DEFAULT_SETTINGS = {
   restaurantName: 'Chez Junior',
@@ -79,6 +79,11 @@ function saveDb(db) {
 
 const db = loadDb();
 const app = express();
+const _path = require('path');
+const FRONT_FILES = ['index.html', 'app.js', 'admin.js', 'style.css', 'base.css'];
+app.get('/', (req, res) => res.sendFile(_path.join(__dirname, 'index.html')));
+FRONT_FILES.forEach((f) => app.get('/' + f, (req, res) => res.sendFile(_path.join(__dirname, f))));
+app.use('/assets', express.static(_path.join(__dirname, 'assets'), { dotfiles: 'ignore' }));
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 app.use(helmet({ contentSecurityPolicy: false }));
